@@ -1,10 +1,31 @@
+import { useEffect, useState } from 'react';
 import './App.css';
+import StudentList from './components/studentsList/StudentList';
+
+const API_URL = "http://localhost:8888"
 
 function App() {
+  const [ studentData, setStudentData ] = useState([]);
+  useEffect(()=> {
+    console.log("<App /> useEffect() fired!")
+    async function fetchData() {
+      const response = await fetch(`${API_URL}/students`);
+      const json = await response.json();
+      console.log("<App /> useEffect() fetched data", json);
+      const { data } = json;
+      setStudentData(data);
+    }
+    fetchData();
+    
+  }, [])
+  console.log(studentData)
+  console.log("<App /> rendered!")
   return (
     <div className="App">
-    hello world
+      <h1>Hello world</h1>
+      <StudentList studentData={studentData} />
     </div>
+    
   );
 }
 
