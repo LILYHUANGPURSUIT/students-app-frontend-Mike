@@ -22,7 +22,6 @@ function App() {
   console.log("<App /> rendered!")
   return (
     <div className="App">
-      <h1>Hello world</h1>
       <StudentList studentData={studentData} />
     </div>
     
