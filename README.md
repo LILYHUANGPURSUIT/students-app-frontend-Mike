@@ -21,4 +21,4 @@ What causes a React component to rerender?
 
 1. The component's parent renders again
 2. The component's props change
-3. The component's state changes
+3.  The component's state changes

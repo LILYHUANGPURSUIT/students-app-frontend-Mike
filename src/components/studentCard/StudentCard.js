@@ -12,8 +12,10 @@ function StudentCard( { student }) {
         </div>
 
         <div className="studentCard__info">
-          <h1>{firstName} {lastName}</h1>
-          <ul>
+          <h1>
+            {firstName} {lastName}
+          </h1>
+          <ul> 
               <li>Email: {email}</li>
               <li>Company: {company}</li>
               <li>Skill: {skill}</li>
