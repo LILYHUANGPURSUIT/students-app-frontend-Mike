@@ -92,7 +92,7 @@ function StudentList({ studentData }) {
 
   return (
     <div className='studentList'>
-        <div className="studentList__controls">
+        <div className="studentList__input">
           <input
             value={searchInput}
             type="text"

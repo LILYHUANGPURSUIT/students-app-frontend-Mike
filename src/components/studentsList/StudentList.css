@@ -1,7 +1,24 @@
-/* .studentList {
-    width: 60vw;
-    height: 80vh;
-    overflow-y: scroll;
-    background-color: #fff;
-    border-radius: 10px;
-} */
+.studentList {
+    height: inherit;
+}
+
+
+.studentList__input input {
+    margin: 0 8px;
+    padding: 16px 0 8px;
+    width: 95%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.studentList__input input:focus {
+    border-color: #777;
+}
+
+.studentList__content--center {
+    height: calc(100% - 41px);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
