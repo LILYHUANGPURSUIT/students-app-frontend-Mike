@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import Container from './components/container/Container';
 import Error from './components/error/Error';
 import Loading from './components/loading/Loading';
 import StudentList from './components/studentsList/StudentList';
@@ -14,6 +15,8 @@ function App() {
   useEffect(()=> {
     async function fetchData() {
       try {
+        // Remove any errors from previous attempts
+        setError("");
         // Show the user we're loading...
         setLoading(true);
         const response = await fetch(`${API_URL}/students`);
@@ -21,14 +24,15 @@ function App() {
         const { data, error } = json;
         // data.split()  // ===> just for Error testing PURPOSE
         if(response.ok) {
+          // handle success
           setStudentData(data);
           // Stoping showing the user the loading UI...
           setLoading(false);
         } else {
+          // handle error
           setError(error);
           setLoading(false);
         }
-        
       } catch (error) {
         console.log(`<App /> useEffect error: ${error.message}`);
         setError(error.message);
@@ -38,6 +42,10 @@ function App() {
     fetchData();
   }, [])
 
+  /* If loading, render <Loading />
+    else if error, render <Error error={error} />
+    else render <StudentList />
+  */
   const renderContent = () => {
     if(loading) {
       return <Loading />;
@@ -50,11 +58,9 @@ function App() {
  
   return (
     <div className="App">
-      {/* If loading, render <Loading />
-          else if error, render <Error error={error} />
-          else render <StudentList /> 
-        */}
-      {renderContent()}
+      <Container center={Boolean(error || loading)}>
+        {renderContent()}
+      </Container>
     </div>
     
   );

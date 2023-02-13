@@ -2,6 +2,7 @@ import React from 'react';
 import "./Error.css"
 
 function Error({error}) {
+  console.log(`<Error /> rendered! error=${error}`);
   return (
     <div className='error'>
         There was an error: {error}
